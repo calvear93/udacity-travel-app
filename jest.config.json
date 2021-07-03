@@ -1,0 +1,21 @@
+{
+    "rootDir": "src",
+    "testEnvironment": "node",
+    "moduleDirectories": [
+        "node_modules",
+        "src"
+    ],
+    "moduleFileExtensions": [
+        "js",
+        "json"
+    ],
+    "testRegex": "src/server/.*\\.(spec|test)\\.js$",
+    "transform": {
+        "^.+\\.js$": "babel-jest"
+    },
+    "setupFiles": ["dotenv/config"],
+    "bail": 1,
+    "verbose": true,
+    "slowTestThreshold": 30,
+    "testTimeout": 60000
+}

@@ -1,0 +1,27 @@
+$logo-size: 10em;
+
+header {
+    display: flex;
+    justify-content: center;
+
+    .brand {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        padding: 2em;
+
+        .logo {
+            width: $logo-size;
+            height: $logo-size;
+            background-image: url('../assets/logo.jpeg');
+            background-repeat: no-repeat;
+            background-size: $logo-size $logo-size;
+        }
+
+        .title {
+            margin-top: 1em;
+            font-weight: bold;
+            font-size: 2em;
+        }
+    }
+}

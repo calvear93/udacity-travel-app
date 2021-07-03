@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+    <head>
+        <meta charset="utf-8" />
+        <title>NLP Analyze</title>
+    </head>
+
+    <body>
+        <header>
+            <div class="brand">
+                <div class="logo" />
+            </div>
+            <div class="title">
+                Udacity's NLP project
+            </div>
+        </header>
+
+        <main>
+            <section class="form">
+                <form id="form" onsubmit="return handleSubmit(event)">
+                    <input
+                        id="url"
+                        type="url"
+                        name="input"
+                        placeholder="Paste your article URL"
+                    />
+                    <input
+                        id="submitter"
+                        type="submit"
+                        value="Submit"
+                        disabled
+                        onclick="return handleSubmit(event)"
+                        onsubmit="return handleSubmit(event)"
+                    />
+                </form>
+            </section>
+
+            <section class="results">
+                <strong>Form Results:</strong>
+                <div id="results"></div>
+            </section>
+
+            <script>
+                // checks that service workers are supported
+                if ('serviceWorker' in navigator) {
+                    window.addEventListener('load', () => {
+                        navigator.serviceWorker.register('/service-worker.js');
+                    });
+                }
+            </script>
+        </main>
+    </body>
+</html>
