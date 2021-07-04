@@ -4,7 +4,7 @@ import chroma from 'chroma-js';
 // color scale for UV index (0-11+)
 const UV_SCALE = chroma
     .scale([ '#32CD32', '#FFD700', '#FFA500', '#FF0000' ])
-    .colors(11);
+    .colors(12);
 
 /**
  * Returns place forecast for until next 16 days by geolocation.
@@ -12,10 +12,10 @@ const UV_SCALE = chroma
  * @see https://www.weatherbit.io/api/weather-forecast-16-day
  *
  * @export
- * @param {Array<number>} location
- * @param {number} location.lat
- * @param {number} location.lon
- * @param {number} days
+ * @param {Array<number>} location - location coordinates
+ * @param {number} location.lat - place latitude
+ * @param {number} location.lon - place longitude
+ * @param {number} days - forecast days for search
  *
  * @returns {any} place weather forecast
  */

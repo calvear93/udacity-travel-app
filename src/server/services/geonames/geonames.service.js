@@ -1,21 +1,20 @@
 import axios from 'axios';
 
 /**
- * Returns place description by text query.
+ * Returns place description by location text query.
  *
  * @see http://www.geonames.org/export/geonames-search.html
  *
  * @export
- * @param {string} query
- * @param {number} [maxRows=1]
+ * @param {string} query - searching text
  *
  * @returns {any} place info
  */
-export async function getPlace(query, maxRows = 1)
+export async function getPlace(query)
 {
     const { status, statusText, data } = await axios({
         method: 'get',
-        url: `${process.env.GEONAMES_API_URL}?username=${process.env.GEONAMES_API_USERNAME}&maxRows=${maxRows}&q=${query}`
+        url: `${process.env.GEONAMES_API_URL}?username=${process.env.GEONAMES_API_USERNAME}&maxRows=1&q=${query}`
     });
 
     if (status === 200)
