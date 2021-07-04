@@ -1,23 +1,24 @@
+import { addDays, format } from 'date-fns';
 import { responseMock } from 'server/mock';
 import { exec } from './form.routes';
 
-describe('NLP Form Route', () =>
+describe('Travel planning Form Route', () =>
 {
-    test('response Ok on express route article analysis', async () =>
+    test('Gets Santiago (Chile) city info and forecast in 7 days', async () =>
     {
         let response = responseMock();
 
         await exec(
-            { body: { query: 'santiago chile' } },
+            { body: { query: 'santiago chile', date: format(addDays(new Date(), 7), process.env.DATE_FORMAT, new Date()) } },
             response
         );
 
-        console.log(response.result);
+        console.log('Travel Api Response ->', JSON.stringify(response.result, null, 2));
 
-        // expect(result.agreement).toBeDefined();
-        // expect(result.irony).toBeDefined();
-        // expect(result.analysis).toBeDefined();
-        // expect(result.analysis.length).toBeGreaterThan(0);
-        expect('hola').toBeDefined();
+        const { data: { city, country, forecast: { code } } } = response.result;
+
+        expect(city).toBe('Santiago');
+        expect(country).toBe('Chile');
+        expect(code).toBe(200);
     });
 });

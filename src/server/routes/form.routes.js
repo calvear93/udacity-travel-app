@@ -1,28 +1,39 @@
 import { getPlace } from 'server/services/geonames';
-import { getPlaceForecast } from 'server/services/weatherbit';
 import { getPlacePhotos } from 'server/services/pixabay';
+import { getPlaceForecast } from 'server/services/weatherbit';
+import { getDateIntervalFromToday } from 'server/utils/time.util';
 
 export async function exec({ body: { query, date } }, response)
 {
     try
     {
+        // calls place info and photos apis
         const [
             info,
             photos
         ] = await Promise.all([
             getPlace(query),
             getPlacePhotos(query)
-
         ]);
 
-        const forecast = await getPlaceForecast([ info.lat, info.lng ], 16);
+        // calcs days until planned travel date
+        const { days } = getDateIntervalFromToday(date);
+
+        // calls forecast api for searched place
+        const forecast = await getPlaceForecast([ info.lat, info.lng ], days);
 
         response
             .status(200)
             .send({
-                info,
+                city: info.toponymName,
+                latitude: info.lat,
+                longitude: info.lng,
+                country: info.countryName,
                 forecast,
-                photos
+                assets: {
+                    countryFlag: `https://www.countryflags.io/${info.countryCode}/flat/64.png`,
+                    placePhotos: photos
+                }
             });
     }
     catch (error)

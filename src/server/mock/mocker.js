@@ -1,5 +1,7 @@
 import nock from 'nock';
 
+const MOCK_DISABLED = process.env.MOCK !== 'true';
+
 export function mockAll()
 {
     mockGeonames();
@@ -9,6 +11,9 @@ export function mockAll()
 
 export function mockGeonames()
 {
+    if (MOCK_DISABLED)
+        return;
+
     nock(process.env.GEONAMES_API_URL)
         .get(/.*/)
         .times(Infinity)
@@ -18,6 +23,9 @@ export function mockGeonames()
 
 export function mockWeatherbit()
 {
+    if (MOCK_DISABLED)
+        return;
+
     nock(process.env.WEATHERBIT_API_URL)
         .get(/.*/)
         .times(Infinity)
@@ -27,6 +35,9 @@ export function mockWeatherbit()
 
 export function mockPixabay()
 {
+    if (MOCK_DISABLED)
+        return;
+
     nock(process.env.PIXABAY_API_URL)
         .get(/.*/)
         .times(Infinity)
@@ -37,10 +48,16 @@ export function mockPixabay()
 export function responseMock()
 {
     const handler = {
-        status: () => handler,
-        send: (r) =>
+        result: {},
+        status: (code) =>
         {
-            handler.result = r;
+            handler.result.status = code;
+
+            return handler;
+        },
+        send: (res) =>
+        {
+            handler.result.data = res;
 
             return handler;
         }
