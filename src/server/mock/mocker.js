@@ -33,3 +33,18 @@ export function mockPixabay()
         .delay(600)
         .reply(200, require('./data/pixabay.mock.json'));
 }
+
+export function responseMock()
+{
+    const handler = {
+        status: () => handler,
+        send: (r) =>
+        {
+            handler.result = r;
+
+            return handler;
+        }
+    };
+
+    return handler;
+}

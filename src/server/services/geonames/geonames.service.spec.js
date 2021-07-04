@@ -16,7 +16,7 @@ describe('Geonames API service', () =>
 
     test('JSON is calculated correctly from response after place search', async () =>
     {
-        const response = await getPlace('santiago de chile');
+        const response = await getPlace('santiago chile');
 
         const { toponymName, countryCode, adminName1 } = response;
 

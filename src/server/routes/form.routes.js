@@ -1,38 +1,44 @@
-// import { analyzeArticle } from '../services/nlp.service';
+import { getPlace } from 'server/services/geonames';
+import { getPlaceForecast } from 'server/services/weatherbit';
+import { getPlacePhotos } from 'server/services/pixabay';
 
-export async function exec({ body: { url } }, response)
+export async function exec({ body: { query, date } }, response)
 {
     try
     {
-        console.log('url', url, 'received');
+        const [
+            info,
+            photos
+        ] = await Promise.all([
+            getPlace(query),
+            getPlacePhotos(query)
 
-        // const { agreement, irony, sentence_list } = await analyzeArticle(url);
+        ]);
 
-        // response.send({
-        //     agreement,
-        //     irony,
-        //     analysis: sentence_list
-        //         .map(i => ({
-        //             text: i.text,
-        //             agreement: i.agreement,
-        //             keywords: [ ...new Set(i.sentimented_concept_list.map(s => s.form)) ] // avoid duplicates
-        //         }))
-        //         .filter(i => i.keywords?.length > 0)
-        // });
+        const forecast = await getPlaceForecast([ info.lat, info.lng ], 16);
+
+        response
+            .status(200)
+            .send({
+                info,
+                forecast,
+                photos
+            });
     }
-    catch (err)
+    catch (error)
     {
-        response.send({
-            agreement: 'An error has ocurred. Please retry.',
-            irony: err.message,
-            analysis: []
-        });
+        response
+            .status(500)
+            .send({
+                message: 'An error has ocurred. Please retry.',
+                error
+            });
     }
 }
 
 // exports route
 export default {
-    path: '/api/nlp',
+    path: '/api/travel/plan',
     method: 'post',
     exec
 };

@@ -23,6 +23,6 @@ describe('Weatherbit API service', () =>
         expect(description).toBe('Clear Sky');
         expect(city).toBe('Santiago');
         expect(icon).toBe('c01d');
-        expect(color).toBe('#ebd605');
+        expect(color).toBe('#dad509');
     });
 });

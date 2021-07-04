@@ -38,7 +38,7 @@ export async function getPlaceForecast([ lat, lon ], days)
         }
 
         // get last weather forecast
-        const weather = data.data[days - 1];
+        const weather = data.data[data.data.length - 1];
 
         // useful data mapping
         return {

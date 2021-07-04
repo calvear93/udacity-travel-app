@@ -1,15 +1,18 @@
+import { responseMock } from 'server/mock';
 import { exec } from './form.routes';
 
 describe('NLP Form Route', () =>
 {
     test('response Ok on express route article analysis', async () =>
     {
-        // let result;
+        let response = responseMock();
 
-        // await exec(
-        //     { body: { url: 'https://www.sciencedaily.com/releases/2021/06/210607161000.htm' } },
-        //     { send: (r) => { result = r; } }
-        // );
+        await exec(
+            { body: { query: 'santiago chile' } },
+            response
+        );
+
+        console.log(response.result);
 
         // expect(result.agreement).toBeDefined();
         // expect(result.irony).toBeDefined();

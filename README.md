@@ -1,7 +1,7 @@
 # UDACITY'S TRAVEL APP
 
 This is the fifth and last project for Udacity's Frontend Developer nanodegree.
-It consists of a page for books a travel to specific place and returns place's weather and info.
+It consists of a page for planning a travel to specific place and returns weather and info.
 
 ## IMPORTANT ⚠
 
