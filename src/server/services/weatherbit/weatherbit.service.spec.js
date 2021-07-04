@@ -1,25 +1,28 @@
-import { getPlace } from './geonames.service';
-import { mockGeonames } from 'server/mock/mocker';
+import { getPlaceForecast } from './weatherbit.service';
+import { mockWeatherbit } from 'server/mock/mocker';
 
-describe('Geonames API service', () =>
+describe('Weatherbit API service', () =>
 {
     beforeAll(() =>
     {
-        mockGeonames();
+        mockWeatherbit();
     });
 
     test('environment variables are defined', async () =>
     {
-        expect(process.env.GEONAMES_API_URL).toBeDefined();
-        expect(process.env.GEONAMES_API_USERNAME).toBeDefined();
+        expect(process.env.WEATHERBIT_API_URL).toBeDefined();
+        expect(process.env.WEATHERBIT_API_KEY).toBeDefined();
     });
 
-    test('response Ok on science article analysis', async () =>
+    test('JSON is calculated correctly from response after weather forecast search', async () =>
     {
-        const response = await getPlace('santiago de chile');
+        const response = await getPlaceForecast([ -33.45694, -70.64827 ], 16);
 
-        expect(response.toponymName).toBe('Santiago');
-        expect(response.countryCode).toBe('CL');
-        expect(response.adminName1).toBe('Santiago Metropolitan');
+        const { description, city, icon, uv: { color } } = response;
+
+        expect(description).toBe('Clear Sky');
+        expect(city).toBe('Santiago');
+        expect(icon).toBe('c01d');
+        expect(color).toBe('#ebd605');
     });
 });

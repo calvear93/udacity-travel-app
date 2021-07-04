@@ -14,12 +14,14 @@ describe('Geonames API service', () =>
         expect(process.env.GEONAMES_API_USERNAME).toBeDefined();
     });
 
-    test('response Ok on science article analysis', async () =>
+    test('JSON is calculated correctly from response after place search', async () =>
     {
         const response = await getPlace('santiago de chile');
 
-        expect(response.toponymName).toBe('Santiago');
-        expect(response.countryCode).toBe('CL');
-        expect(response.adminName1).toBe('Santiago Metropolitan');
+        const { toponymName, countryCode, adminName1 } = response;
+
+        expect(toponymName).toBe('Santiago');
+        expect(countryCode).toBe('CL');
+        expect(adminName1).toBe('Santiago Metropolitan');
     });
 });

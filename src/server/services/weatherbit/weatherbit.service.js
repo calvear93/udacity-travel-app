@@ -1,4 +1,10 @@
 import axios from 'axios';
+import chroma from 'chroma-js';
+
+// color scale for UV index (0-11+)
+const UV_SCALE = chroma
+    .scale([ '#32CD32', '#FFD700', '#FFA500', '#FF0000' ])
+    .colors(11);
 
 /**
  * Returns place forecast for until next 16 days by geolocation.
@@ -13,45 +19,64 @@ import axios from 'axios';
  *
  * @returns {any} place weather forecast
  */
-export async function getPlace([ lat, lon ], days)
+export async function getPlaceForecast([ lat, lon ], days)
 {
-    const { status, statusText, data: { data } = {} } = await axios({
+    const { status, statusText, data } = await axios({
         method: 'get',
         url: `${process.env.WEATHERBIT_API_URL}?key=${process.env.WEATHERBIT_API_KEY}&days=${days}&lat=${lat}&lon=${lon}`
     });
 
     if (status === 200)
     {
+        // validates response data
+        if (!data || !data.data || data.data.length === 0)
+        {
+            return {
+                code: 404,
+                description: 'There is no weather information for the specified date'
+            };
+        }
+
+        // get last weather forecast
+        const weather = data.data[days - 1];
+
+        // useful data mapping
         return {
+            code: 200,
+            description: weather.weather.description,
             timezone: data.timezone,
-            date: data.valid_date,
+            city: data.city_name,
+            countryISO: data.country_code,
+            date: weather.valid_date,
+            icon: weather.weather.icon,
             wind: {
                 unit: 'm/s',
-                speed: data.wind_spd,
-                direction: data.wind_cdir_full
+                speed: weather.wind_spd,
+                direction: weather.wind_cdir_full
             },
             temperature: {
                 unit: '°C',
-                average: data.temp,
-                max: data.max_temp,
-                min: data.min_temp
+                average: weather.temp,
+                max: weather.max_temp,
+                min: weather.min_temp
             },
             precipitation: {
                 unit: 'mm',
-                probability: data.pop,
-                accumulated: data.precip
+                probability: weather.pop,
+                accumulated: weather.precip
             },
             snow: {
                 unit: 'mm',
-                depth: data.snow_depth,
-                accumulated: data.snow
+                depth: weather.snow_depth,
+                accumulated: weather.snow
             },
             visibility: {
                 unit: 'km',
-                value: data.vis
+                value: weather.vis
             },
             uv: {
-                value: data.uv
+                color: UV_SCALE[~~weather.uv],
+                value: weather.uv
             }
         };
     }
