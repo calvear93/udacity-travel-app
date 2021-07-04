@@ -1,0 +1,25 @@
+{
+    "totalResultsCount": 2742,
+    "geonames": [
+        {
+            "adminCode1": "12",
+            "lng": "-70.64827",
+            "geonameId": 3871336,
+            "toponymName": "Santiago",
+            "countryId": "3895114",
+            "fcl": "P",
+            "population": 4837295,
+            "countryCode": "CL",
+            "name": "Santiago",
+            "fclName": "city, village,...",
+            "adminCodes1": {
+                "ISO3166_2": "RM"
+            },
+            "countryName": "Chile",
+            "fcodeName": "capital of a political entity",
+            "adminName1": "Santiago Metropolitan",
+            "lat": "-33.45694",
+            "fcode": "PPLC"
+        }
+    ]
+}
