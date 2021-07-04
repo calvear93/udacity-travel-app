@@ -1,12 +1,16 @@
 import { getPlace } from 'server/services/geonames';
 import { getPlacePhotos } from 'server/services/pixabay';
 import { getPlaceForecast } from 'server/services/weatherbit';
+import { removeDiacritics } from 'server/utils/string.util';
 import { getDateIntervalFromToday } from 'server/utils/time.util';
 
 export async function exec({ body: { query, date } }, response)
 {
     try
     {
+        // normalizes/cleans query string
+        query = removeDiacritics(query);
+
         // calls place info and photos apis
         const [
             info,

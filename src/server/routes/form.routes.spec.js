@@ -6,7 +6,7 @@ describe('Travel planning Form Route', () =>
 {
     test('Gets Santiago (Chile) city info and forecast in 7 days', async () =>
     {
-        let response = responseMock();
+        const response = responseMock();
 
         await exec(
             { body: { query: 'santiago chile', date: format(addDays(new Date(), 7), process.env.DATE_FORMAT, new Date()) } },
