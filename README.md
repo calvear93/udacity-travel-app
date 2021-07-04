@@ -50,7 +50,8 @@ Before execute the project, install npm dependencies with `npm i`.
 You should create a .env file in project root, with the format below:
 
 ```bash
-DEBUG=false # true for use mock response in nodejs server
+DEBUG=false
+MOCK=false # true for use mock response in nodejs server
 GEONAMES_API_URL=http://api.geonames.org/searchJSON
 GEONAMES_API_USERNAME=<your-user-name>
 WEATHERBIT_API_URL=https://api.weatherbit.io/v2.0/forecast/daily

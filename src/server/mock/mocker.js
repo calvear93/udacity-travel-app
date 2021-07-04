@@ -9,9 +9,6 @@ export function mockAll()
 
 export function mockGeonames()
 {
-    if (process.env.DEBUG !== 'true')
-        return;
-
     nock(process.env.GEONAMES_API_URL)
         .get(/.*/)
         .times(Infinity)
@@ -21,9 +18,6 @@ export function mockGeonames()
 
 export function mockWeatherbit()
 {
-    if (process.env.DEBUG !== 'true')
-        return;
-
     nock(process.env.WEATHERBIT_API_URL)
         .get(/.*/)
         .times(Infinity)
@@ -33,9 +27,6 @@ export function mockWeatherbit()
 
 export function mockPixabay()
 {
-    if (process.env.DEBUG !== 'true')
-        return;
-
     nock(process.env.PIXABAY_API_URL)
         .get(/.*/)
         .times(Infinity)

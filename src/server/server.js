@@ -18,6 +18,9 @@ createRoutes(app);
 // starts server
 app.listen(PORT, () =>
 {
-    mockAll(); // mocks api calls if DEBUG env var is true
+    // mocks api calls if MOCK env var is true
+    if (process.env.MOCK !== 'true')
+        mockAll();
+
     console.info(`Server listening at http://localhost:${PORT}`);
 });
