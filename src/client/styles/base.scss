@@ -1,14 +1,27 @@
+$background_image: url('../assets/background.svg');
+
 body {
     display: flex;
     flex-direction: column;
     min-height: 100vh;
+
+    margin: 0;
+    color: color(font);
+
+    font-size: 16px;
+    font-family: 'Newsreader', sans-serif;
+    background-color: color(background);
+    background-image: $background_image;
+    background-size: contain;
+    background-attachment: scroll;
+}
+
+header,
+main,
+footer {
+    flex-shrink: 0;
 }
 
 main {
-    flex: 2;
-}
-
-section {
-    max-width: 800px;
-    margin: 50px auto;
+    flex-grow: 1;
 }

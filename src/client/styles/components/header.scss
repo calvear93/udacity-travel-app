@@ -1,4 +1,5 @@
-$logo-size: 10em;
+$logo-size: 12em;
+$background_image: url('../assets/logo.png');
 
 header {
     display: flex;
@@ -8,20 +9,14 @@ header {
         display: flex;
         flex-direction: column;
         align-items: center;
-        padding: 2em;
+        padding: 0;
 
         .logo {
             width: $logo-size;
             height: $logo-size;
-            background-image: url('../assets/logo.jpeg');
+            background-image: $background_image;
             background-repeat: no-repeat;
             background-size: $logo-size $logo-size;
-        }
-
-        .title {
-            margin-top: 1em;
-            font-weight: bold;
-            font-size: 2em;
         }
     }
 }

@@ -1,17 +1,31 @@
 <!DOCTYPE html>
 <html lang="en" dir="ltr">
     <head>
+        <title>Udacity Travel App</title>
+
+        <!-- document metadata -->
         <meta charset="utf-8" />
-        <title>NLP Analyze</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
+
+        <meta
+            name="description"
+            content="Last project for Udacity's Frontend Web Developer nanodegree."
+        />
+
+        <link
+            rel="stylesheet"
+            href="https://fonts.googleapis.com/css?family=Newsreader"
+        />
+        <link
+            rel="stylesheet"
+            href="https://cdn.jsdelivr.net/npm/@mdi/font@5.9.55/css/materialdesignicons.min.css"
+        />
     </head>
 
     <body>
-        <header>
+        <header class="unselectable">
             <div class="brand">
                 <div class="logo" />
-            </div>
-            <div class="title">
-                Udacity's NLP project
             </div>
         </header>
 
@@ -28,27 +42,29 @@
                         id="submitter"
                         type="submit"
                         value="Submit"
-                        disabled
-                        onclick="return handleSubmit(event)"
-                        onsubmit="return handleSubmit(event)"
                     />
                 </form>
             </section>
 
             <section class="results">
-                <img src="https://www.countryflags.io/CL/flat/64.png">
+                <img src="https://www.countryflags.io/CL/flat/64.png" />
                 <strong>Form Results:</strong>
                 <div id="results"></div>
             </section>
-
-            <script>
-                // checks that service workers are supported
-                if ('serviceWorker' in navigator) {
-                    window.addEventListener('load', () => {
-                        navigator.serviceWorker.register('/service-worker.js');
-                    });
-                }
-            </script>
         </main>
+
+        <footer>
+            <h1 class="title">About:</h1>
+            <p class="text">Last project of Udacity's Frontend Web Developer nanodegree.</p>
+        </footer>
+
+        <script>
+            // checks that service workers are supported
+            if ('serviceWorker' in navigator) {
+                window.addEventListener('load', () => {
+                    navigator.serviceWorker.register('/service-worker.js');
+                });
+            }
+        </script>
     </body>
 </html>
