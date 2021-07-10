@@ -1,5 +1,5 @@
 import { getPlaceForecast } from './weatherbit.service';
-import { mockWeatherbit } from 'server/mock/mocker';
+import { mockWeatherbit } from '../../mock/mocker';
 
 describe('Weatherbit API service', () =>
 {

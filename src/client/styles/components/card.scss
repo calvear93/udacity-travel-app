@@ -1,0 +1,50 @@
+// card deepness levels for generate
+$levels: 1, 2, 3, 4, 6, 8, 10;
+
+// calcs box-shadow for each level
+@function card-shadow-calc($level) {
+    $hor-offset: $level * 1px;
+    $ver-offset: ($level * 2) * 1px;
+    $opacity: $level * 0.05;
+
+    @return (
+        0 $hor-offset $ver-offset rgba(0, 0, 0, $opacity),
+        0 $hor-offset $ver-offset rgba(0, 0, 0, 0.25)
+    );
+}
+
+// generates box-shadow for card
+@mixin card-shadow($level) {
+    -webkit-box-shadow: card-shadow-calc($level);
+    -moz-box-shadow: card-shadow-calc($level);
+    box-shadow: card-shadow-calc($level);
+}
+
+.card {
+    margin: 1rem;
+    background: rgba(255, 255, 255, 0.1);
+
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 4px;
+
+    -webkit-backdrop-filter: blur(4px);
+    backdrop-filter: blur(4px);
+    transition: all 0.2s cubic-bezier(0.25, 0.8, 0.25, 1);
+
+    @include card-shadow(1);
+
+    // generates box-shadow and z-index for each card level
+    @each $level in $levels {
+        &.depth-#{$level} {
+            z-index: $level * 10;
+
+            @include card-shadow($level);
+
+            &.hoverable:hover {
+                cursor: pointer;
+
+                @include card-shadow($level + 2);
+            }
+        }
+    }
+}

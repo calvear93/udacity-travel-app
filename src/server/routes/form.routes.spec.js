@@ -1,5 +1,5 @@
 import { addDays, format } from 'date-fns';
-import { responseMock } from 'server/mock';
+import { responseMock } from '../mock';
 import { exec } from './form.routes';
 
 describe('Travel planning Form Route', () =>

@@ -8,6 +8,8 @@ async function handleSubmit(e)
     e.preventDefault();
 
     alert('yeh');
+
+    console.log(Calendar);
 }
 
 // function handleInputChange({ target: { value } })

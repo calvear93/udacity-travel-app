@@ -1,6 +1,6 @@
 import express from 'express';
 import cors from 'cors';
-import { mockAll } from 'mock';
+import { mockAll } from './mock';
 import { createRoutes } from './routes';
 
 const PORT = 3000;

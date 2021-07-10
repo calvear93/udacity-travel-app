@@ -1,8 +1,8 @@
-import { getPlace } from 'server/services/geonames';
-import { getPlacePhotos } from 'server/services/pixabay';
-import { getPlaceForecast } from 'server/services/weatherbit';
-import { removeDiacritics } from 'server/utils/string.util';
-import { getDateIntervalFromToday } from 'server/utils/time.util';
+import { getPlace } from '../services/geonames';
+import { getPlacePhotos } from '../services/pixabay';
+import { getPlaceForecast } from '../services/weatherbit';
+import { removeDiacritics } from '../utils/string.util';
+import { getDateIntervalFromToday } from '../utils/time.util';
 
 export async function exec({ body: { query, date } }, response)
 {

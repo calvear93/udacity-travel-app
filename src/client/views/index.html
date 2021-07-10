@@ -12,6 +12,7 @@
             content="Last project for Udacity's Frontend Web Developer nanodegree."
         />
 
+        <!-- FONTS -->
         <link
             rel="stylesheet"
             href="https://fonts.googleapis.com/css?family=Newsreader"
@@ -20,6 +21,25 @@
             rel="stylesheet"
             href="https://cdn.jsdelivr.net/npm/@mdi/font@5.9.55/css/materialdesignicons.min.css"
         />
+
+        <!-- CALENDAR DATE PICKER -->
+        <link
+            rel="stylesheet"
+            href="https://cdn.jsdelivr.net/npm/color-calendar/dist/css/theme-basic.css"
+        />
+        <link
+            rel="stylesheet"
+            href="https://cdn.jsdelivr.net/npm/color-calendar/dist/css/theme-glass.css"
+        />
+        <script src="https://cdn.jsdelivr.net/npm/color-calendar/dist/bundle.min.js"></script>
+
+        <!-- DATE-FNS -->
+        <script
+            src="https://cdnjs.cloudflare.com/ajax/libs/date-fns/1.30.1/date_fns.min.js"
+            integrity="sha512-F+u8eWHrfY8Xw9BLzZ8rG/0wIvs0y+JyRJrXjp3VjtFPylAEEGwKbua5Ip/oiVhaTDaDs4eU2Xtsxjs/9ag2bQ=="
+            crossorigin="anonymous"
+            referrerpolicy="no-referrer"
+        ></script>
     </head>
 
     <body>
@@ -29,36 +49,48 @@
             </div>
         </header>
 
-        <main>
-            <section class="form">
+        <main class="card depth-2">
+            <section class="form card depth-2">
                 <form id="form" onsubmit="return handleSubmit(event)">
-                    <input
-                        id="url"
-                        type="url"
-                        name="input"
-                        placeholder="Paste your article URL"
-                    />
-                    <input
-                        id="submitter"
-                        type="submit"
-                        value="Submit"
-                    />
+                    <div>
+                        <input
+                            id="place"
+                            type="text"
+                            placeholder="Search for a location"
+                        />
+
+                        <div id="calendar"></div>
+                    </div>
+
+                    <input id="submit-plan" type="submit" value="Search" />
                 </form>
             </section>
 
-            <section class="results">
+            <section class="results card depth-2">
                 <img src="https://www.countryflags.io/CL/flat/64.png" />
                 <strong>Form Results:</strong>
                 <div id="results"></div>
             </section>
         </main>
 
-        <footer>
+        <footer class="card depth-2">
             <h1 class="title">About:</h1>
-            <p class="text">Last project of Udacity's Frontend Web Developer nanodegree.</p>
+            <p class="text">
+                Last project of Udacity's Frontend Web Developer nanodegree.
+            </p>
         </footer>
 
         <script>
+            // initializes calendar for date picking
+            window.Calendar = new Calendar({
+                id: '#calendar',
+                theme: 'glass',
+                startWeekday: 1,
+                fontFamilyHeader: 'Newsreader',
+                fontFamilyWeekdays: 'Newsreader',
+                fontFamilyBody: 'Newsreader'
+            });
+
             // checks that service workers are supported
             if ('serviceWorker' in navigator) {
                 window.addEventListener('load', () => {

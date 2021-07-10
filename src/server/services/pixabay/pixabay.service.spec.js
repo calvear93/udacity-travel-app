@@ -1,5 +1,5 @@
 import { getPlacePhotos } from './pixabay.service';
-import { mockPixabay } from 'server/mock/mocker';
+import { mockPixabay } from '../../mock/mocker';
 
 describe('Weatherbit API service', () =>
 {

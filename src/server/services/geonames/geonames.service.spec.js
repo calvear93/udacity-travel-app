@@ -1,5 +1,5 @@
 import { getPlace } from './geonames.service';
-import { mockGeonames } from 'server/mock/mocker';
+import { mockGeonames } from '../../mock/mocker';
 
 describe('Geonames API service', () =>
 {

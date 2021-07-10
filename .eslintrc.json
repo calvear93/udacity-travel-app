@@ -7,6 +7,9 @@
         "jest": true,
         "node": true
     },
+    "globals": {
+        "Calendar": "readonly"
+    },
     "extends": ["eslint:recommended", "plugin:radar/recommended"],
     "parser": "@babel/eslint-parser",
     "parserOptions": {
