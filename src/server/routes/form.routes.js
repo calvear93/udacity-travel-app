@@ -35,7 +35,7 @@ export async function exec({ body: { query, date } }, response)
                 country: info.countryName,
                 forecast,
                 assets: {
-                    weatherIcon: `https://www.weatherbit.io/static/img/icons/${forecast.countryISO}.png`,
+                    weatherIcon: `https://www.weatherbit.io/static/img/icons/${forecast.icon}.png`,
                     // countryFlag: `https://www.countryflags.io/${info.countryCode}/flat/64.png`,
                     countryFlag: `https://flagcdn.com/${info.countryCode?.toLowerCase()}.svg`,
                     placePhotos: photos

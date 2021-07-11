@@ -6,7 +6,6 @@ const show = (message, duration = 3000, classes = []) =>
         close: false,
         gravity: 'top',
         position: 'center',
-        backgroundColor: 'white',
         className: [ 'toast-container unselectable', ...classes ].join(' ')
     }).showToast();
 };

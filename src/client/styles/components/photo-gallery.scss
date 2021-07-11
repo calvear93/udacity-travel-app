@@ -37,9 +37,10 @@
 
         .card-image {
             min-width: 100%;
-            max-width: 512px;
+            max-width: 384px;
 
             max-height: 18em;
+            // max-height: 50vh;
             object-fit: cover;
             vertical-align: bottom;
             border-radius: 4px;

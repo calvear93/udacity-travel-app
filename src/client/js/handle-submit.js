@@ -1,24 +1,24 @@
 import { store } from './store';
 import { toast } from './toast';
+import { renderPhotoGallery, renderPlaceInfo } from './info-builder';
 import { handleInputState, handleElementVisibility } from './handle-input-change';
 
 export const handleSubmit = async (e) =>
 {
-    setLoadingState(true);
+    setLoadingState('loading');
     e.preventDefault();
 
     try
     {
-        setLoadingState('loading');
-
         const query = store.get('place');
         const date = dayjs(store.get(Calendar.id)).format('YYYY/MM/DD');
 
-        const placeInfo = await getPlaceInfoFor(query, date);
+        const { city, country, forecast, assets } = await getPlaceInfoFor(query, date);
 
-        setLoadingState('ready', true, true);
+        renderPlaceInfo(city, country, assets.countryFlag, assets.weatherIcon, forecast);
+        renderPhotoGallery(assets?.placePhotos);
 
-        toast.success(`Place found successfully for ${placeInfo.city}, ${placeInfo.country}!`, 4000);
+        setLoadingState('ready', forecast?.code === 200, assets?.placePhotos?.length > 0);
     }
     catch (err)
     {
