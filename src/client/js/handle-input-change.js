@@ -9,9 +9,6 @@ export const handleInputState = (inputId, state = 'enabled') =>
         case 'enabled':
             input.disabled = false;
             input.classList.remove('loading');
-
-            if (store.get(`bkp:${inputId}`))
-                input.value = store.get(`bkp:${inputId}`);
             break;
 
         case 'disabled':
@@ -22,14 +19,21 @@ export const handleInputState = (inputId, state = 'enabled') =>
         case 'loading':
             input.disabled = false;
             input.classList.add('loading');
-
-            store.set(`bkp:${inputId}`, input.value);
-            input.value = 'Loading...';
             break;
 
         default:
             break;
     }
+};
+
+export const handleElementVisibility = (elementId, isVisible) =>
+{
+    const ele = document.getElementById(elementId);
+
+    if (isVisible)
+        ele.classList.remove('hidden');
+    else
+        ele.classList.add('hidden');
 };
 
 export const handleInputChange = (inputId, callback) =>
