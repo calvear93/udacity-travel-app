@@ -88,7 +88,21 @@
                             />
                         </div>
 
-                        <div id="search-info" class="search-info card depth-1">
+                        <div
+                            id="search-loader"
+                            class="search-loader card depth-1 hidden"
+                        >
+                            <lottie-player
+                                loop
+                                autoplay
+                                speed="1"
+                                background="transparent"
+                                style="height: auto; width: 80%; text-align: center;"
+                                src="https://assets3.lottiefiles.com/packages/lf20_cPIWGr.json"
+                            ></lottie-player>
+                        </div>
+
+                        <div id="search-info" class="search-info card depth-1 hidden">
                             <div class="location card depth-1">
                                 <img
                                     class="flag"
@@ -138,14 +152,16 @@
                 </form>
             </section>
 
-            <section class="photographs">
+            <section id="no-photographs" class="no-photographs hidden">
                 <ul class="photo-container card depth-2">
                     <li class="item card empty">
                         <h1>No photos available for this place</h1>
                     </li>
                 </ul>
+            </section>
 
-                <ul class="photo-container card depth-2">
+            <section id="photographs" class="photographs hidden">
+                <ul id="photo-gallery" class="photo-container card depth-2">
                     <li class="item card depth-2">
                         <img
                             class="card-image"

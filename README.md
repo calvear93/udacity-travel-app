@@ -3,6 +3,9 @@
 This is the fifth and last project for Udacity's Frontend Developer nanodegree.
 It consists of a page for planning a travel to specific place and returns weather and info.
 
+https://lottiefiles.com/web-player?lottie_url=https%3A%2F%2Fassets3.lottiefiles.com%2Fpackages%2Flf20_cPIWGr.json
+https://www.adobe.com/es/express/create/logo
+
 ## IMPORTANT ⚠
 
 Project uses [Geonames](https://www.geonames.org/), [Weatherbit](https://www.weatherbit.io/) and [Pixabay](https://pixabay.com/).

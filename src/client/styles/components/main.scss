@@ -45,6 +45,14 @@ main {
                 }
             }
 
+            .search-loader {
+                display: flex;
+                justify-content: center;
+                margin: 1em 0;
+                margin-right: 0.2em;
+                padding: 1em;
+            }
+
             .search-info {
                 margin: 1em 0;
                 margin-right: 0.2em;
@@ -153,6 +161,7 @@ main {
                     margin: 1em;
                 }
 
+                .search-loader,
                 .search-info {
                     margin: 1em;
                 }
