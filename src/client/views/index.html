@@ -33,7 +33,7 @@
         />
         <script src="https://cdn.jsdelivr.net/npm/color-calendar/dist/bundle.min.js"></script>
 
-        <!-- DAY-JS -->
+        <!-- DAYJS -->
         <script src="https://unpkg.com/dayjs@1.8.21/dayjs.min.js"></script>
         <script src="https://unpkg.com/dayjs@1.8.21/plugin/utc.js"></script>
     </head>
@@ -88,13 +88,17 @@
                                 <div class="detail card depth-1">
                                     <ul>
                                         <li>
-                                            <b>Temperature:&nbsp</b>1.02395 °C (max:
-                                            14.4, min: 5.1)
+                                            <b>Temperature:&nbsp</b>1.02395 °C
+                                            (max: 14.4, min: 5.1)
                                         </li>
-                                        <li><b>Wind:&nbsp</b>10.5 m/s, south</li>
+                                        <li>
+                                            <b>Wind:&nbsp</b>10.5 m/s, south
+                                        </li>
                                         <li><b>Precipitation:&nbsp</b>0 mm</li>
                                         <li><b>Snow:&nbsp</b>0 mm</li>
-                                        <li><b>Visibility:&nbsp</b>24.128 km</li>
+                                        <li>
+                                            <b>Visibility:&nbsp</b>24.128 km
+                                        </li>
                                         <li style="color: #dad509;">
                                             <b>UV:&nbsp</b>3.4085
                                         </li>
@@ -110,8 +114,59 @@
                 </form>
             </section>
 
-            <section class="photographs card depth-2">
+            <section class="photographs">
+                <ul class="photo-container card depth-2">
+                    <!-- <li class="item card empty">
+                        <h1>No photos available</h1>
+                    </li> -->
+                    <li class="item card depth-2">
+                        <img
+                            class="card-image"
+                            alt="card-image"
+                            src="https://picsum.photos/600/1200"
+                        />
+                    </li>
 
+                    <li class="item card depth-2">
+                        <img
+                            class="card-image"
+                            alt="card-image"
+                            src="https://picsum.photos/600/1200"
+                        />
+                    </li>
+
+                    <li class="item card depth-2">
+                        <img
+                            class="card-image"
+                            alt="card-image"
+                            src="https://picsum.photos/600/1200"
+                        />
+                    </li>
+
+                    <li class="item card depth-2">
+                        <img
+                            class="card-image"
+                            alt="card-image"
+                            src="https://picsum.photos/600/1200"
+                        />
+                    </li>
+
+                    <li class="item card depth-2">
+                        <img
+                            class="card-image"
+                            alt="card-image"
+                            src="https://picsum.photos/600/1200"
+                        />
+                    </li>
+
+                    <li class="item card depth-2">
+                        <img
+                            class="card-image"
+                            alt="card-image"
+                            src="https://picsum.photos/1600/1200"
+                        />
+                    </li>
+                </ul>
             </section>
         </main>
 
@@ -133,6 +188,7 @@
                 fontFamilyBody: 'Newsreader'
             });
 
+            // initializes day.js
             dayjs.extend(window.dayjs_plugin_utc);
 
             // checks that service workers are supported
