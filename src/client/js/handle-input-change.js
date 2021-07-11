@@ -1,6 +1,7 @@
 import { store } from './store';
 import { toast } from './toast';
 
+// alows to handle button and input loading state on fetching
 export const handleInputState = (inputId, state = 'enabled') =>
 {
     const input = document.getElementById(inputId);
@@ -69,15 +70,7 @@ export const handleCalendarChange = (calendar) =>
         {
             toast.warning('Select pasted dates are not allowed');
             setTimeout(() => calendar.reset(), 1); // avoid DOM conflicts
-            // calendar.setDate(Date.now());
         }
-
-        // avoids to select a date over 16 days
-        // if (date.diff(today, 'day') > 16)
-        // {
-        //     toast.warning('Select dates over 16 days are not allowed');
-        //     setTimeout(() => calendar.reset(), 1); // avoid DOM conflicts
-        // }
 
         store.set(calendar.id, currentDate);
     };

@@ -18,13 +18,6 @@ export function getDateIntervalFromToday(dateString)
     if (isPast)
         return { days: -1 };
 
-    console.log(today);
-    console.log(date);
-    console.log(intervalToDuration({
-        start: today,
-        end: date
-    }));
-
     const { years, months, days } = intervalToDuration({
         start: today,
         end: date

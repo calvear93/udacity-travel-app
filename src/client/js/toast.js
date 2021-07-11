@@ -1,3 +1,4 @@
+// showa a info toast
 const show = (message, duration = 3000, classes = []) =>
 {
     Toastify({

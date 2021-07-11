@@ -15,7 +15,7 @@
     },
     "setupFiles": ["dotenv/config"],
     "bail": 1,
-    "verbose": false,
+    "verbose": true,
     "slowTestThreshold": 30,
     "testTimeout": 60000
 }
