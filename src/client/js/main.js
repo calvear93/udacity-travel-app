@@ -1,7 +1,4 @@
-import { showResults } from './showResults';
-
-let url;
-let isValid = false;
+import { store } from './store';
 
 async function handleSubmit(e)
 {
@@ -10,6 +7,7 @@ async function handleSubmit(e)
     alert('yeh');
 
     console.log(Calendar);
+    console.log(dayjs('06/04/2020'));
 }
 
 // function handleInputChange({ target: { value } })

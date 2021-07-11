@@ -10,6 +10,11 @@
 $colors: (
     font: #ffffff,
     background: #97d0c0,
+    primary: #00acc1,
+    active: #4caf50,
+    error: #e53935,
+    warn: #f9a825,
+    submit: #3f7cb5,
 );
 
 @function color($key) {

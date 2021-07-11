@@ -1,2 +1,95 @@
+@mixin form-section() {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+
+    padding: 2em 1em;
+}
+
+img {
+    .flag {
+        border-radius: 24px;
+    }
+}
+
 main {
+    #form {
+        display: flex;
+
+        .plan {
+            flex-grow: 1;
+
+            @include form-section();
+
+            .search {
+                display: flex;
+                justify-content: center;
+
+                #place {
+                    flex-grow: 1;
+                }
+
+                #submit {
+                    min-width: 12em;
+                    color: white;
+                    background-color: color(submit);
+                }
+            }
+
+            .search-info {
+                margin: 1em 0;
+                margin-right: 0.2em;
+                padding: 1em;
+
+                .location {
+                    display: flex;
+                    align-items: center;
+                    justify-content: flex-start;
+                    padding: 0.6em;
+
+                    .name {
+                        flex-grow: 1;
+                        color: color(primary);
+                        font-weight: bolder;
+                        font-size: 2rem;
+                        text-align: center;
+                    }
+                }
+            }
+        }
+
+        .calendar {
+            align-items: flex-end;
+
+            @include form-section();
+        }
+    }
+}
+
+@media (max-width: 960px) {
+    main {
+        #form {
+            display: flex;
+            flex-direction: column-reverse;
+            align-items: center;
+            margin-top: 2em;
+
+            .plan {
+                width: 100%;
+                padding: 1em;
+
+                .search {
+                    margin: 1em;
+                }
+
+                .search-info {
+                    margin: 1em;
+                }
+            }
+
+            .calendar {
+                padding: 1em;
+            }
+        }
+    }
 }

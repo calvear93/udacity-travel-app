@@ -33,13 +33,9 @@
         />
         <script src="https://cdn.jsdelivr.net/npm/color-calendar/dist/bundle.min.js"></script>
 
-        <!-- DATE-FNS -->
-        <script
-            src="https://cdnjs.cloudflare.com/ajax/libs/date-fns/1.30.1/date_fns.min.js"
-            integrity="sha512-F+u8eWHrfY8Xw9BLzZ8rG/0wIvs0y+JyRJrXjp3VjtFPylAEEGwKbua5Ip/oiVhaTDaDs4eU2Xtsxjs/9ag2bQ=="
-            crossorigin="anonymous"
-            referrerpolicy="no-referrer"
-        ></script>
+        <!-- DAY-JS -->
+        <script src="https://unpkg.com/dayjs@1.8.21/dayjs.min.js"></script>
+        <script src="https://unpkg.com/dayjs@1.8.21/plugin/utc.js"></script>
     </head>
 
     <body>
@@ -52,29 +48,69 @@
         <main class="card depth-2">
             <section class="form card depth-2">
                 <form id="form" onsubmit="return handleSubmit(event)">
-                    <div>
-                        <input
-                            id="place"
-                            type="text"
-                            placeholder="Search for a location"
-                        />
+                    <div class="plan">
+                        <div class="search">
+                            <input
+                                id="place"
+                                type="text"
+                                class="form-item input"
+                                placeholder="Search for a location"
+                            />
 
-                        <div id="calendar"></div>
+                            <input
+                                id="submit"
+                                class="form-item button"
+                                type="submit"
+                                value="Search"
+                            />
+                        </div>
+
+                        <div id="search-info" class="search-info card depth-1">
+                            <div class="location card depth-1">
+                                <img
+                                    class="flag"
+                                    alt="country-flag"
+                                    src="https://www.countryflags.io/CL/flat/64.png"
+                                />
+                                <div class="name">Santiago, Chile</div>
+                            </div>
+
+                            <div class="info">
+                                <div class="weather">
+                                    <img
+                                        class="weather-icon"
+                                        alt="weather-icon"
+                                        src="https://www.weatherbit.io/static/img/icons/r01d.png"
+                                    />
+                                    <div class="name">Santiago, Chile</div>
+                                </div>
+
+                                <div class="detail">
+                                    <img
+                                        class="weather-icon"
+                                        alt="weather-icon"
+                                        src="https://www.weatherbit.io/static/img/icons/r01d.png"
+                                    />
+                                    <div class="name">Santiago, Chile</div>
+                                </div>
+                            </div>
+                        </div>
                     </div>
 
-                    <input id="submit-plan" type="submit" value="Search" />
+                    <div class="calendar">
+                        <div id="calendar"></div>
+                    </div>
                 </form>
             </section>
 
             <section class="results card depth-2">
-                <img src="https://www.countryflags.io/CL/flat/64.png" />
                 <strong>Form Results:</strong>
                 <div id="results"></div>
             </section>
         </main>
 
         <footer class="card depth-2">
-            <h1 class="title">About:</h1>
+            <h1 class="title">About</h1>
             <p class="text">
                 Last project of Udacity's Frontend Web Developer nanodegree.
             </p>
@@ -90,6 +126,8 @@
                 fontFamilyWeekdays: 'Newsreader',
                 fontFamilyBody: 'Newsreader'
             });
+
+            dayjs.extend(window.dayjs_plugin_utc);
 
             // checks that service workers are supported
             if ('serviceWorker' in navigator) {

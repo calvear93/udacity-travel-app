@@ -3,6 +3,7 @@ $background_image: url('../assets/background.svg');
 body {
     display: flex;
     flex-direction: column;
+    min-width: 540px;
     min-height: 100vh;
 
     margin: 0;
