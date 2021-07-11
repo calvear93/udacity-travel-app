@@ -73,8 +73,8 @@ For correct interpretation of linters, is recommended to use [Visual Studio Code
 
 ## Resources 📁
 
-[Lottie Loader](https://lottiefiles.com/web-player?lottie_url=https%3A%2F%2Fassets3.lottiefiles.com%2Fpackages%2Flf20_cPIWGr.json)
-[Adobe Spark](https://www.adobe.com/es/express/create/logo)
+-   [Lottie Loader](https://lottiefiles.com/web-player?lottie_url=https%3A%2F%2Fassets3.lottiefiles.com%2Fpackages%2Flf20_cPIWGr.json)
+-   [Adobe Spark](https://www.adobe.com/es/express/create/logo)
 
 ---
 
