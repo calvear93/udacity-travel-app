@@ -38,16 +38,36 @@
             type="text/css"
             href="https://cdn.jsdelivr.net/npm/toastify-js/src/toastify.min.css"
         />
+
+        <!-- LOTTIE -->
+        <script
+            async
+            src="https://unpkg.com/@lottiefiles/lottie-player@latest/dist/lottie-player.js"
+        ></script>
     </head>
 
     <body>
+        <!-- BRAND -->
         <header class="unselectable">
             <div class="brand">
                 <div class="logo" />
             </div>
         </header>
 
-        <main class="card depth-2">
+        <!-- LOADER ANIMATION -->
+        <div id="loader" style="display: flex; justify-content: center;">
+            <lottie-player
+                loop
+                autoplay
+                speed="1"
+                background="transparent"
+                style="width: 60%; text-align: center;"
+                src="https://assets3.lottiefiles.com/packages/lf20_cPIWGr.json"
+            ></lottie-player>
+        </div>
+
+        <!-- MAIN CONTENT -->
+        <main id="content" class="card depth-2 hidden">
             <section class="form card depth-2">
                 <form id="form" onsubmit="return handleSubmit(event)">
                     <div class="plan">
@@ -74,6 +94,7 @@
                                     class="flag"
                                     src="https://flagcdn.com/cl.svg"
                                     alt="Chile"
+                                    width="64"
                                 />
                                 <div class="name">Santiago, Chile</div>
                             </div>
@@ -119,9 +140,12 @@
 
             <section class="photographs">
                 <ul class="photo-container card depth-2">
-                    <!-- <li class="item card empty">
-                        <h1>No photos available</h1>
-                    </li> -->
+                    <li class="item card empty">
+                        <h1>No photos available for this place</h1>
+                    </li>
+                </ul>
+
+                <ul class="photo-container card depth-2">
                     <li class="item card depth-2">
                         <img
                             class="card-image"

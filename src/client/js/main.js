@@ -11,4 +11,11 @@ window.onload = () =>
     handleCalendarChange(Calendar);
 
     window.handleSubmit = handleSubmit;
+
+    // loader logic
+    const mainContainer = document.getElementById('content');
+    const loader = document.getElementById('loader');
+    mainContainer.classList.remove('hidden');
+    loader.classList.add('hidden');
+    loader.remove();
 };

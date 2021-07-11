@@ -2,13 +2,21 @@
     width: 24em;
     margin-top: 0.4em;
     font-size: 1rem;
-}
+    border-radius: 4px !important;
 
-.color-calendar.glass .calendar__body {
-    margin: 1em;
-}
+    &.glass {
+        .calendar__body {
+            margin: 1em;
+            border-radius: 4px !important;
 
-.color-calendar.glass .calendar__picker {
-    width: 93%;
-    margin: 1em;
+            .calendar__day .calendar__day-box {
+                border-radius: 4px !important;
+            }
+        }
+
+        .calendar__picker {
+            width: 93%;
+            margin: 1em;
+        }
+    }
 }

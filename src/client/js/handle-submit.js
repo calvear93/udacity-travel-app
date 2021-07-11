@@ -16,7 +16,7 @@ export const handleSubmit = async (e) =>
 
         const placeInfo = await getPlaceInfoFor(query, date);
 
-        toast.success('Place found successfully!', 3000);
+        toast.success(`Place found successfully for ${placeInfo.city}, ${placeInfo.country}!`, 4000);
     }
     catch (err)
     {
