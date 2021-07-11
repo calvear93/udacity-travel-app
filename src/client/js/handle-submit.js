@@ -23,7 +23,7 @@ export const handleSubmit = async (e) =>
     catch (err)
     {
         toast.error('An error has ocurred!', 4000);
-        setLoadingState('error', false, true);
+        setLoadingState('error');
         console.error(err);
     }
 };
@@ -56,6 +56,8 @@ function setLoadingState(state, hasWeather, hasPhotos)
 
             if (hasWeather)
                 handleElementVisibility('search-info', true);
+            else
+                handleElementVisibility('no-search-info', true);
 
             if (hasPhotos)
                 handleElementVisibility('photographs', true);
@@ -69,6 +71,7 @@ function setLoadingState(state, hasWeather, hasPhotos)
             handleInputState('submit', 'loading');
             handleElementVisibility('search-loader', true);
             handleElementVisibility('search-info', false);
+            handleElementVisibility('no-search-info', false);
             handleElementVisibility('photographs', false);
             handleElementVisibility('no-photographs', false);
 
@@ -78,6 +81,8 @@ function setLoadingState(state, hasWeather, hasPhotos)
             handleInputState('place', 'enabled');
             handleInputState('submit', 'enabled');
             handleElementVisibility('search-loader', false);
+            handleElementVisibility('search-info', false);
+            handleElementVisibility('photographs', false);
 
             break;
 
