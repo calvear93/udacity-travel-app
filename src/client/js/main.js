@@ -1,13 +1,14 @@
 import { handleSubmit } from './handle-submit';
-import { handleInputChange, handleCalendarChange } from './handle-input-change';
+import { handleInputChange, handleCalendarChange, handleInputState } from './handle-input-change';
 
 // on DOM loaded
 window.onload = () =>
 {
-    handleInputChange('place');
+    handleInputChange('place', (val) =>
+    {
+        handleInputState('submit', val ? 'enabled' : 'disabled');
+    });
     handleCalendarChange(Calendar);
-
-    console.log(dayjs('06/04/2020'));
 
     window.handleSubmit = handleSubmit;
 };

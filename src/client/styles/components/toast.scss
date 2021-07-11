@@ -1,0 +1,28 @@
+.toast-container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    min-width: 8em;
+    padding: 1em;
+    color: black;
+
+    font-weight: bolder;
+    font-size: 1.2em;
+    border-radius: 6px;
+
+    &.success {
+        color: white;
+        background: #1faa00 !important;
+    }
+
+    &.warning {
+        color: white;
+        background: #ffa040 !important;
+    }
+
+    &.error {
+        color: white;
+        background: #dd2c00 !important;
+    }
+}

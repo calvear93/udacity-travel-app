@@ -9,7 +9,8 @@
     },
     "globals": {
         "Calendar": "readonly",
-        "dayjs": "readonly"
+        "dayjs": "readonly",
+        "Toastify": "readonly"
     },
     "extends": ["eslint:recommended", "plugin:radar/recommended"],
     "parser": "@babel/eslint-parser",

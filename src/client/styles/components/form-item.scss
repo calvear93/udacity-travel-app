@@ -21,6 +21,25 @@
         background-color: transparent;
 
         @include backdrop-filter(32px);
+
+        &:disabled {
+            box-shadow: none !important;
+            cursor: not-allowed !important;
+        }
+    }
+
+    &.button {
+        &:disabled {
+            background-color: gray !important;
+            box-shadow: none !important;
+            cursor: not-allowed !important;
+        }
+
+        &.loading {
+            background-color: orange !important;
+            box-shadow: none !important;
+            cursor: not-allowed !important;
+        }
     }
 
     &:focus,
