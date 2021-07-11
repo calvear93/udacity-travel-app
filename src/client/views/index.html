@@ -66,7 +66,7 @@
                         </div>
 
                         <div id="search-info" class="search-info card depth-1">
-                            <div class="location card depth-1">
+                            <div class="location card depth-2">
                                 <img
                                     class="flag"
                                     alt="country-flag"
@@ -76,22 +76,29 @@
                             </div>
 
                             <div class="info">
-                                <div class="weather">
+                                <div class="weather card depth-1">
                                     <img
                                         class="weather-icon"
                                         alt="weather-icon"
                                         src="https://www.weatherbit.io/static/img/icons/r01d.png"
                                     />
-                                    <div class="name">Santiago, Chile</div>
+                                    <div class="desc">Clear Sky</div>
                                 </div>
 
-                                <div class="detail">
-                                    <img
-                                        class="weather-icon"
-                                        alt="weather-icon"
-                                        src="https://www.weatherbit.io/static/img/icons/r01d.png"
-                                    />
-                                    <div class="name">Santiago, Chile</div>
+                                <div class="detail card depth-1">
+                                    <ul>
+                                        <li>
+                                            <b>Temperature:&nbsp</b>1.02395 °C (max:
+                                            14.4, min: 5.1)
+                                        </li>
+                                        <li><b>Wind:&nbsp</b>10.5 m/s, south</li>
+                                        <li><b>Precipitation:&nbsp</b>0 mm</li>
+                                        <li><b>Snow:&nbsp</b>0 mm</li>
+                                        <li><b>Visibility:&nbsp</b>24.128 km</li>
+                                        <li style="color: #dad509;">
+                                            <b>UV:&nbsp</b>3.4085
+                                        </li>
+                                    </ul>
                                 </div>
                             </div>
                         </div>
@@ -103,9 +110,8 @@
                 </form>
             </section>
 
-            <section class="results card depth-2">
-                <strong>Form Results:</strong>
-                <div id="results"></div>
+            <section class="photographs card depth-2">
+
             </section>
         </main>
 
