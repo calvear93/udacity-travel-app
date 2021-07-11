@@ -1,4 +1,4 @@
-import { intervalToDuration, parse } from 'date-fns';
+import { intervalToDuration, parse, isBefore, getYear, getMonth, getDate } from 'date-fns';
 
 /**
  * Parses a future date and returns interval from today.
@@ -10,8 +10,25 @@ import { intervalToDuration, parse } from 'date-fns';
  */
 export function getDateIntervalFromToday(dateString)
 {
-    return intervalToDuration({
-        start: new Date(),
-        end: parse(dateString, process.env.DATE_FORMAT, new Date())
+    const today = new Date();
+    const date = parse(dateString, process.env.DATE_FORMAT, today);
+
+    const isPast = isBefore(new Date(getYear(date), getMonth(date) + 1, getDate(date)), new Date(getYear(today), getMonth(today) + 1, getDate(today)));
+
+    if (isPast)
+        return { days: -1 };
+
+    console.log(today);
+    console.log(date);
+    console.log(intervalToDuration({
+        start: today,
+        end: date
+    }));
+
+    const { years, months, days } = intervalToDuration({
+        start: today,
+        end: date
     });
+
+    return days + months * 30 + years * 12 * 30;
 }

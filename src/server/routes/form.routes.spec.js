@@ -13,7 +13,7 @@ describe('Travel planning Form Route', () =>
             response
         );
 
-        console.log('Travel Api Response ->', JSON.stringify(response.result, null, 2));
+        // console.log('Travel Api Response ->', JSON.stringify(response.result, null, 2));
 
         const { data: { city, country, forecast: { code } } } = response.result;
 

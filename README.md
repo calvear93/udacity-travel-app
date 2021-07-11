@@ -3,9 +3,6 @@
 This is the fifth and last project for Udacity's Frontend Developer nanodegree.
 It consists of a page for planning a travel to specific place and returns weather and info.
 
-https://lottiefiles.com/web-player?lottie_url=https%3A%2F%2Fassets3.lottiefiles.com%2Fpackages%2Flf20_cPIWGr.json
-https://www.adobe.com/es/express/create/logo
-
 ## IMPORTANT ⚠
 
 Project uses [Geonames](https://www.geonames.org/), [Weatherbit](https://www.weatherbit.io/) and [Pixabay](https://pixabay.com/).
@@ -59,6 +56,7 @@ DATE_FORMAT=yyyy/MM/dd
 GEONAMES_API_URL=http://api.geonames.org/searchJSON
 GEONAMES_API_USERNAME=<your-user-name>
 WEATHERBIT_API_URL=https://api.weatherbit.io/v2.0/forecast/daily
+WEATHERBIT_TODAY_API_URL=https://api.weatherbit.io/v2.0/current
 WEATHERBIT_API_KEY=<your-api-key>
 PIXABAY_API_URL=https://pixabay.com/api/
 PIXABAY_API_KEY=<your-api-key>
@@ -72,6 +70,11 @@ Project uses two linters, for code formatting and code styling normalizing.
 -   **stylelint**: CSS/SASS linter.
 
 For correct interpretation of linters, is recommended to use [Visual Studio Code](https://code.visualstudio.com/) as IDE and install Eslint plugin.
+
+## Resources 📁
+
+(Lottie Loader)[https://lottiefiles.com/web-player?lottie_url=https%3A%2F%2Fassets3.lottiefiles.com%2Fpackages%2Flf20_cPIWGr.json]
+(Adobe Spark - Logo Creator)[https://www.adobe.com/es/express/create/logo]
 
 ---
 

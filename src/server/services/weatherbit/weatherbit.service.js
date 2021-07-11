@@ -21,15 +21,26 @@ const UV_SCALE = chroma
  */
 export async function getPlaceForecast([ lat, lon ], days)
 {
-    const { status, statusText, data } = await axios({
+    if (days < 0 || days > 16)
+    {
+        return {
+            code: 404,
+            description: 'There is no weather information for the specified date'
+        };
+    }
+
+    // switches between current and future weather API
+    const url = days > 0 ? process.env.WEATHERBIT_API_URL : process.env.WEATHERBIT_TODAY_API_URL;
+
+    const { status, data } = await axios({
         method: 'get',
-        url: `${process.env.WEATHERBIT_API_URL}?key=${process.env.WEATHERBIT_API_KEY}&days=${days}&lat=${lat}&lon=${lon}`
+        url: `${url}?key=${process.env.WEATHERBIT_API_KEY}&days=${days}&lat=${lat}&lon=${lon}`
     });
 
     if (status === 200)
     {
         // validates response data
-        if (!data || !data.data || data.data.length === 0)
+        if (!data || !data.data || !data.data.length || data.data.length === 0)
         {
             return {
                 code: 404,
@@ -81,5 +92,8 @@ export async function getPlaceForecast([ lat, lon ], days)
         };
     }
 
-    throw new Error(statusText);
+    return {
+        code: 500,
+        description: 'An error has ocurred retrieving weather info'
+    };
 }

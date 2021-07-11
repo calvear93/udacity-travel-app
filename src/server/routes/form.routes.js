@@ -20,8 +20,11 @@ export async function exec({ body: { query, date } }, response)
             getPlacePhotos(query)
         ]);
 
+        if (!info.countryName)
+            throw new Error('Locations could not be found!');
+
         // calcs days until planned travel date
-        const { days } = getDateIntervalFromToday(date);
+        const days = getDateIntervalFromToday(date);
 
         // calls forecast api for searched place
         const forecast = await getPlaceForecast([ info.lat, info.lng ], days);
@@ -37,7 +40,8 @@ export async function exec({ body: { query, date } }, response)
                 assets: {
                     weatherIcon: `https://www.weatherbit.io/static/img/icons/${forecast.icon}.png`,
                     // countryFlag: `https://www.countryflags.io/${info.countryCode}/flat/64.png`,
-                    countryFlag: `https://flagcdn.com/${info.countryCode?.toLowerCase()}.svg`,
+                    // countryFlag: `https://flagcdn.com/${info.countryCode?.toLowerCase()}.svg`,
+                    countryFlag: `https://flagcdn.com/256x192/${info.countryCode?.toLowerCase()}.png`,
                     placePhotos: photos
                 }
             });
@@ -48,7 +52,7 @@ export async function exec({ body: { query, date } }, response)
             .status(500)
             .send({
                 message: 'An error has ocurred. Please retry.',
-                error
+                detail: error.message
             });
     }
 }

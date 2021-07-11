@@ -22,7 +22,7 @@ export const handleSubmit = async (e) =>
     }
     catch (err)
     {
-        toast.error('An error has ocurred!', 4000);
+        toast.error('Location could not be found!', 4000);
         setLoadingState('error');
         console.error(err);
     }

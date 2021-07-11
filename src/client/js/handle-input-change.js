@@ -61,13 +61,23 @@ export const handleCalendarChange = (calendar) =>
 {
     calendar.dateChanged = (currentDate) =>
     {
+        const today = dayjs(Date.now());
+        const date = dayjs(currentDate);
+
         // avoids to select a past date
-        if (dayjs(currentDate).isBefore(dayjs(Date.now()), 'day'))
+        if (date.isBefore(today, 'day'))
         {
             toast.warning('Select pasted dates are not allowed');
             setTimeout(() => calendar.reset(), 1); // avoid DOM conflicts
             // calendar.setDate(Date.now());
         }
+
+        // avoids to select a date over 16 days
+        // if (date.diff(today, 'day') > 16)
+        // {
+        //     toast.warning('Select dates over 16 days are not allowed');
+        //     setTimeout(() => calendar.reset(), 1); // avoid DOM conflicts
+        // }
 
         store.set(calendar.id, currentDate);
     };
