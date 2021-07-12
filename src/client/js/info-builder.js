@@ -1,8 +1,19 @@
+/**
+ * Renders fetched info un UI.
+ *
+ * @export
+ * @param {string} city
+ * @param {string} country
+ * @param {string} flagUrl
+ * @param {string} weatherUrl
+ * @param {any} forecast
+ */
 export function renderPlaceInfo(city, country, flagUrl, weatherUrl, forecast)
 {
     if (!city)
         return;
 
+    // gets DOM UI elements
     const countryFlag = document.getElementById('country-flag');
     const placeName = document.getElementById('place-name');
     const weatherIcon = document.getElementById('weather-icon');
@@ -21,6 +32,7 @@ export function renderPlaceInfo(city, country, flagUrl, weatherUrl, forecast)
 
     weatherDetail.textContent = '';
 
+    // adds forecast info only if exists
     if (forecast?.code === 200)
     {
         const { wind, temperature, precipitation, snow, visibility, uv } = forecast;
@@ -34,6 +46,12 @@ export function renderPlaceInfo(city, country, flagUrl, weatherUrl, forecast)
     }
 }
 
+/**
+ * Renders images from place
+ *
+ * @export
+ * @param {Array<string>} photos photos urls
+ */
 export function renderPhotoGallery(photos)
 {
     if (!photos)
@@ -54,6 +72,14 @@ export function renderPhotoGallery(photos)
     rootNode.appendChild(fragment);
 }
 
+/**
+ * Creates a new photo item for UI photo gallery.
+ *
+ * @param {string | number} id
+ * @param {string} url
+ *
+ * @returns {HTMLElement}
+ */
 function createPhoto(id, url)
 {
     let item = document.createElement('li');
@@ -70,6 +96,15 @@ function createPhoto(id, url)
     return item;
 }
 
+/**
+ * Creates a new item for place info.
+ *
+ * @param {string} title
+ * @param {string} info
+ * @param {string} color any CSS color if has
+ *
+ * @returns {HTMLElement}
+ */
 function createItem(title, info, color)
 {
     let item = document.createElement('li');

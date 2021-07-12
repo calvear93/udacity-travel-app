@@ -3,6 +3,12 @@ import { toast } from './toast';
 import { renderPhotoGallery, renderPlaceInfo } from './info-builder';
 import { handleInputState, handleElementVisibility } from './handle-input-change';
 
+/**
+ * Prepares data, sets UI state and fetches
+ * place info and forecast from the API.
+ *
+ * @param {Event} e submit event
+ */
 export const handleSubmit = async (e) =>
 {
     setLoadingState('loading');
@@ -10,11 +16,15 @@ export const handleSubmit = async (e) =>
 
     try
     {
+        // gets input string from store
         const query = store.get('place');
+        // formats selected date
         const date = dayjs(store.get(Calendar.id)).format('YYYY/MM/DD');
 
+        // fetches place and forecast info
         const { city, country, forecast, assets } = await getPlaceInfoFor(query, date);
 
+        // executes UI rendering updating
         renderPlaceInfo(city, country, assets.countryFlag, assets.weatherIcon, forecast);
         renderPhotoGallery(assets?.placePhotos);
 
@@ -28,6 +38,14 @@ export const handleSubmit = async (e) =>
     }
 };
 
+/**
+ * Fetches place and forecast info
+ *
+ * @param {string} query
+ * @param {Date} date
+ *
+ * @returns {any} place info and forecast
+ */
 async function getPlaceInfoFor(query, date)
 {
     const response = await fetch(
@@ -42,13 +60,23 @@ async function getPlaceInfoFor(query, date)
         }
     );
 
+    // retrieves the body
     return await response.json();
 }
 
+/**
+ * Updates the UI for rendering
+ * the place info and forecast,
+ *
+ * @param {string} state maybe 'ready', 'loading' or 'error
+ * @param {boolean} hasWeather if info contains weather
+ * @param {boolean} hasPhotos if place has photos for show
+ */
 function setLoadingState(state, hasWeather, hasPhotos)
 {
     switch (state)
     {
+        // when place info and forecast is ready
         case 'ready':
             handleInputState('place', 'enabled');
             handleInputState('submit', 'enabled');
@@ -66,6 +94,7 @@ function setLoadingState(state, hasWeather, hasPhotos)
 
             break;
 
+        // when place info is loading
         case 'loading':
             handleInputState('place', 'disabled');
             handleInputState('submit', 'loading');
@@ -77,6 +106,7 @@ function setLoadingState(state, hasWeather, hasPhotos)
 
             break;
 
+        // when fetching has errors
         case 'error':
             handleInputState('place', 'enabled');
             handleInputState('submit', 'enabled');

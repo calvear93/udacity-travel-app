@@ -2,6 +2,11 @@ import nock from 'nock';
 
 const MOCK_DISABLED = process.env.MOCK !== 'true';
 
+/**
+ * Injects all mocks.
+ *
+ * @export
+ */
 export function mockAll()
 {
     mockGeonames();
@@ -9,6 +14,11 @@ export function mockAll()
     mockPixabay();
 }
 
+/**
+ * Injects mocks for Geonames API.
+ *
+ * @export
+ */
 export function mockGeonames()
 {
     if (MOCK_DISABLED)
@@ -21,6 +31,11 @@ export function mockGeonames()
         .reply(200, require('./data/geonames.mock.json'));
 }
 
+/**
+ * Injects mocks for WeatherBIT API.
+ *
+ * @export
+ */
 export function mockWeatherbit()
 {
     if (MOCK_DISABLED)
@@ -33,6 +48,11 @@ export function mockWeatherbit()
         .reply(200, require('./data/weatherbit.mock.json'));
 }
 
+/**
+ * Injects mocks for PixaBay API.
+ *
+ * @export
+ */
 export function mockPixabay()
 {
     if (MOCK_DISABLED)
@@ -45,6 +65,12 @@ export function mockPixabay()
         .reply(200, require('./data/pixabay.mock.json'));
 }
 
+/**
+ * Mocks a Express response object for testing.
+ *
+ * @export
+ * @returns {Response}
+ */
 export function responseMock()
 {
     const handler = {

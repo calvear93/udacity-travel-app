@@ -11,16 +11,19 @@ const show = (message, duration = 3000, classes = []) =>
     }).showToast();
 };
 
+// success toast
 const success = (message, duration = 3000) =>
 {
     show(message, duration, [ 'success' ]);
 };
 
+// warning toast
 const warning = (message, duration = 3000) =>
 {
     show(message, duration, [ 'warning' ]);
 };
 
+// error toast
 const error = (message, duration = 3000) =>
 {
     show(message, duration, [ 'error' ]);

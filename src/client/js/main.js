@@ -10,6 +10,7 @@ window.onload = () =>
     });
     handleCalendarChange(Calendar);
 
+    // sets global scope for submit handler
     window.handleSubmit = handleSubmit;
 
     // loader logic

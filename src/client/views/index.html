@@ -69,8 +69,10 @@
         <!-- MAIN CONTENT -->
         <main id="content" class="card depth-2 hidden">
             <section class="form card depth-2">
+                <!-- PLACE FORM -->
                 <form id="form" onsubmit="return handleSubmit(event)">
                     <div class="plan">
+                        <!-- place search input -->
                         <div class="search">
                             <input
                                 id="place"
@@ -79,6 +81,7 @@
                                 placeholder="Search for a location"
                             />
 
+                            <!-- submit button -->
                             <input
                                 id="submit"
                                 class="form-item button"
@@ -88,6 +91,7 @@
                             />
                         </div>
 
+                        <!-- show on place info loading -->
                         <div
                             id="search-loader"
                             class="search-loader card depth-1 hidden"
@@ -102,6 +106,7 @@
                             ></lottie-player>
                         </div>
 
+                        <!-- show on place no info found -->
                         <div
                             id="no-search-info"
                             class="photo-container card depth-1 hidden"
@@ -147,12 +152,14 @@
                         </div>
                     </div>
 
+                    <!-- calendar, day picker -->
                     <div class="calendar">
                         <div id="calendar"></div>
                     </div>
                 </form>
             </section>
 
+            <!-- show on no photos for place -->
             <section id="no-photographs" class="no-photographs hidden">
                 <ul class="photo-container card depth-2">
                     <li class="item card empty">
